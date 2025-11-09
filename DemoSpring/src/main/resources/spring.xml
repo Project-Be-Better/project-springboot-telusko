@@ -5,15 +5,10 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="dev" class="org.xploretown.Dev">
-        <property name="comp" ref="lap1"/>
-
+    <bean id="dev" class="org.xploretown.Dev" autowire="byType">
     </bean>
 
-
-    <bean id="lap1" class="org.xploretown.Laptop">
-
-    </bean>
-
+    <bean id="lap1" class="org.xploretown.Laptop" primary="true"/>
+    <bean id="desk1" class="org.xploretown.Desktop"/>
 
 </beans>
