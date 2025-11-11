@@ -29,7 +29,7 @@ public class HomeController {
 
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable int id) {
-        return productService.getProductById(id);
+        return productService.getProductById(id).orElseThrow(() -> new RuntimeException("Product Not FOund"));
     }
 
     @PostMapping("/products")
