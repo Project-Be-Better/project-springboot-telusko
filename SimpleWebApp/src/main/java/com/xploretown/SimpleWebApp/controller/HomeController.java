@@ -14,7 +14,6 @@ public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    //    ProductService productService = new ProductService();
     @Autowired
     ProductService productService;
 
@@ -35,7 +34,6 @@ public class HomeController {
 
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product) {
-//        System.out.println(product);
         logger.debug(product.toString());
         productService.addProduct(product);
     }
