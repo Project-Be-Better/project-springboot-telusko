@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api")
@@ -16,13 +19,18 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/hello")
-    public String greet(){
+    public String greet() {
         return "Hello";
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productService.getAllProducts();
+    }
+
+    @GetMapping("/products/{id}")
+    public Optional<Product> getProductById(@RequestParam int id) {
+        return productService.getProductById(id);
     }
 
 }
