@@ -1,6 +1,8 @@
 package com.xploretown.backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String desc;
@@ -23,4 +26,5 @@ public class Product {
     private String category;
     private Date releaseDate;
     private boolean available;
+    public int quantity;
 }
