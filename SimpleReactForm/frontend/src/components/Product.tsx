@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export interface ProductData {
   id: string;
   name: string;
@@ -9,8 +11,11 @@ type ProductProps = {
 };
 
 const Product = ({ product }: ProductProps) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
     console.log("Clicked on the component ", product.name);
+    navigate(`/products/${product.id}`);
   };
 
   return (
