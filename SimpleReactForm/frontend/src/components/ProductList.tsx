@@ -1,32 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-type ProductType = {
-  id: number;
-  name: string;
-  desc: string;
-};
+import useFetch from "../hooks/useFetch";
+import Product, { type ProductData } from "./Product";
 
 const ProductList = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
+  const { data, loading, error } = useFetch<ProductData[]>(
+    "http://localhost:8080/api/products",
+  );
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/products")
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log("Error: ", err);
-      });
-  }, []);
+  if (loading) {
+    return <p>Loading</p>;
+  }
+
+  if (error) {
+    return <p>Error {error}</p>;
+  }
 
   return (
-    <div>
-      {products.map((prod) => (
-        <div key={prod.id}>
-          <p>{prod.name}</p>
-          <p>{prod.desc}</p>
+    <div className="grid grid-cols-3 gap-6">
+      {data?.map((product, index) => (
+        <div key={index}>
+          <Product product={product} />
         </div>
       ))}
     </div>
