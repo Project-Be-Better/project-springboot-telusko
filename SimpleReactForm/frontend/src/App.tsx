@@ -1,10 +1,10 @@
-import Product from "./Product";
+import ProductList from "./components/ProductList";
 
 const App = () => {
   return (
     <div>
       App
-      <Product />
+      <ProductList />
     </div>
   );
 };

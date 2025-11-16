@@ -7,7 +7,7 @@ type ProductType = {
   desc: string;
 };
 
-const Product = () => {
+const ProductList = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductList;
